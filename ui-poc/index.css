@@ -30,6 +30,10 @@
 	font-size: 8pt;
 }
 
+#commits {
+	font-size: 8pt;
+}
+
 #ox1dizer {
 	font-size: 28pt;
 }
@@ -40,6 +44,15 @@
 }
 
 #github:hover {
+	text-decoration: underline;
+}
+
+#latest {
+	text-decoration: none;
+	color: #000;
+}
+
+#latest:hover {
 	text-decoration: underline;
 }
 

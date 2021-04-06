@@ -60,14 +60,16 @@
 	}
 	function setCommitInfo(txt) {
 	    lgc = JSON.parse(txt);
-	    lgc = lgc[0].sha.slice(0, 7);
 	    console.log("Currently on version " + lgc);
-	    ox1versionstring = OX1DIZER_VERSION + "@" + lgc;
+	    ox1versionstring = "ox1dizer" + OX1DIZER_VERSION + "@" + lgc[0].sha.slice(0, 7);;
 	    ox1chromeversionstring = ox1versionstring + "/chromium " + CHROMIUMOS_KERNEL;
+	    ox1commitstring = ox1versionstring + " " + lgc[0].commit.message;
 	    console.log("ox1 versionstring: " + ox1versionstring);
 	    console.log("ox1chrome versionstring: " + ox1chromeversionstring);
 	    console.log("opensource forever as it should be");
 	    document.getElementById("version").innerHTML = ox1chromeversionstring;
+	    document.getElementById("latest").innerHTML = ox1commitstring;
+	    document.getElementById("latest").href = lgc[0].html_url;
 	}
 	function grabCommitInfo() {
 		url = "https://api.github.com/repos/grittif1er/ox1dizer/commits";
@@ -91,6 +93,7 @@
 			<br>
 			<br>
 			<p id="version">ox1dizer 1.0.1@82555a8/chromium 17983.0.0</p>
+			<p id="commits">latest commit: <a id="latest" href=""></a></p>
 			<p id="developers">
 				<a class="dev" href="https://github.com/coredoescode">coredoescode</a>
 				 - 
