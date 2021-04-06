@@ -1,0 +1,76 @@
+<html>
+<head>
+	<title>ox1dizer</title>
+	<link rel="stylesheet" href="./index.css">
+	<script>
+	function done4() {
+		document.getElementById("msg").innerHTML = "ox1dized";
+		document.getElementById("start").innerHTML = "Re-ox1dize";
+	}
+	function done3() {
+		document.getElementById("msg").innerHTML = "Plug in the USB, press space and watch the magic";
+		setTimeout(done4, 1250);
+	}
+	function done2() {
+		document.getElementById("msg").innerHTML = "Trigger recovery with ESC+Reload+Pwr";
+		setTimeout(done3, 1250);
+	}
+	function done() {
+		document.getElementById("msg").innerHTML = "Done";
+		setTimeout(done2, 1250);
+	}
+	function disable_rootfs_verification() {
+		document.getElementById("msg").innerHTML = "finalizing, sdk enable_rootfs_verification false";
+		setTimeout(done, 7000);
+	}
+	function scaryBootScreen() {
+		document.getElementById("msg").innerHTML = "Fixing a recovery bug allowing the scary boot screen to wipe device";
+		setTimeout(disable_rootfs_verification, 250);
+	}
+	function enableRwMount() {
+		document.getElementById("msg").innerHTML = "Stage 3: enable_rw_mount workarond";
+		setTimeout(scaryBootScreen, 650);
+	}
+	function stage2and3() {
+		document.getElementById("msg").innerHTML = "Stage 2: Heap spray, prepping for RW mount enable";
+		// actually do kernelimg heap spray and actually enable rw mount
+		setTimeout(enableRwMount, 500);
+	}
+	function stage1() {
+		console.log("time to ox1dize");
+		document.getElementById("msg").innerHTML = "Stage 1: Writing image";
+		// write image, this is just a PoC
+		setTimeout(stage2and3, 5000);
+	}
+	function startExploit() {
+		console.log("ox1dize ready");
+		document.getElementById("start").innerHTML = "Running";
+		stage1();
+	}
+</script>
+</head>
+<body>
+	<div class="all">
+		<div class="info">
+			<span id="ox1dizer">ox1dizer - reveals what really matters</span>
+			<br>
+			<a id="github" href="https://github.com/grittif1er/ox1dizer">open source on github as it always will be</a>
+			<br>
+			<br>
+		</div>
+		<div class="btn">
+			<p id="msg"></p>
+			<button id="start" onclick="startExploit()">ox1dize</button>
+			<br>
+			<br>
+			<p id="version">ox1dizer 1.0.1@82555a8/chromium 17983.0.0</p>
+			<p id="developers">
+				<a class="dev" href="https://github.com/coredoescode">coredoescode</a>
+				 - 
+				<a class="dev" href="https://github.com/terramaster85">TerraMaster85</a>
+				 - 
+				 <a class="dev" href="https://github.com/InterestingBrainPoops">101donutman</a></p>
+		</div>
+	</div>
+</body>
+</html>
