@@ -3,6 +3,8 @@
 	<title>ox1dizer</title>
 	<link rel="stylesheet" href="./index.css">
 	<script>
+	OX1DIZER_VERSION = "1.0.1";
+	CHROMIUMOS_KERNEL = "17983.0.0";
 	function done4() {
 		document.getElementById("msg").innerHTML = "ox1dized";
 		document.getElementById("start").innerHTML = "Re-ox1dize";
@@ -47,9 +49,25 @@
 		document.getElementById("start").innerHTML = "Running";
 		stage1();
 	}
-	function httpGetAsync(theUrl, callback){var xmlHttp = new XMLHttpRequest();xmlHttp.onreadystatechange = function() { if (xmlHttp.readyState == 4 && xmlHttp.status == 200)callback(xmlHttp.responseText);}xmlHttp.open("GET", theUrl, true);xmlHttp.send(null);}
+	function httpGetAsync(theUrl, callback) {
+    	var xmlHttp = new XMLHttpRequest();
+    	xmlHttp.onreadystatechange = function() { 
+    	    if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+    	        callback(xmlHttp.responseText);
+    	}
+    	xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+    	xmlHttp.send(null);
+	}
 	function setCommitInfo(txt) {
-	        console.log(JSON.parse(txt)[0].sha.slice(0, 6));
+	    lgc = JSON.parse(txt);
+	    lgc = lgc[0].sha.slice(0, 7);
+	    console.log("Currently on version " + lgc);
+	    ox1versionstring = OX1DIZER_VERSION + "@" + lgc;
+	    ox1chromeversionstring = ox1versionstring + "/chromium " + CHROMIUMOS_KERNEL;
+	    console.log("ox1 versionstring: " + ox1versionstring);
+	    console.log("ox1chrome versionstring: " + ox1chromeversionstring);
+	    console.log("opensource forever as it should be");
+	    document.getElementById("version").innerHTML = ox1chromeversionstring;
 	}
 	function grabCommitInfo() {
 		url = "https://api.github.com/repos/grittif1er/ox1dizer/commits";
@@ -82,4 +100,7 @@
 		</div>
 	</div>
 </body>
+<script>
+	grabCommitInfo();
+</script>
 </html>
