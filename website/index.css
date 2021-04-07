@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+.info {
+	font-family: 'Open Sans', serif;
+}
+
+#start {
+	color: #fff;
+	border-radius: 100px;
+	padding: 20px;
+	max-width: 150px;
+	background-color: #C0C0C0;
+	border: none;
+	width: 150px;
+	transition: 0.3s;
+}
+
+#start:hover {
+	background-color: #b7410e;
+}
+
+#version {
+	font-size: 8pt;
+}
+
+#developers {
+	font-size: 8pt;
+}
+
+#msg {
+	font-size: 8pt;
+}
+
+#commits {
+	font-size: 8pt;
+}
+
+#ox1dizer {
+	font-size: 28pt;
+}
+
+#github {
+	text-decoration: none;
+	color: #000;
+}
+
+#github:hover {
+	text-decoration: underline;
+}
+
+#latest {
+	text-decoration: none;
+	color: #000;
+}
+
+#latest:hover {
+	text-decoration: underline;
+}
+
+.dev {
+	text-decoration: none;
+	color: #000;
+}
+
+.dev:hover {
+	text-decoration: underline;
+}
+
+.btn {
+	text-align: center;
+}
+
+.all {
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	-ms-transform:translate(-50%,-50%);
+	text-align: center;
+}
