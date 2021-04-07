@@ -8,3 +8,4 @@ def ox1_banner_poc_console():
   print("the ox1dizer project - initializing")
   # todo: init function
  
+# python go brrrr
