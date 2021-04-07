@@ -1,1 +1,70 @@
-
+<html>
+<head>
+	<title>ox1dizer</title>
+	<link rel="stylesheet" href="./index.css">
+	<script>
+	OX1DIZER_VERSION = "1.0.1";
+	CHROMIUMOS_KERNEL = "17983.0.0";
+  function website() {
+    window.location.href="https://github.com/grittif1er/ox1dizer";
+  }
+	function httpGetAsync(theUrl, callback) {
+    	var xmlHttp = new XMLHttpRequest();
+    	xmlHttp.onreadystatechange = function() { 
+    	    if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+    	        callback(xmlHttp.responseText);
+    	}
+    	xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+    	xmlHttp.send(null);
+	}
+	function setCommitInfo(txt) {
+	    lgc = JSON.parse(txt);
+	    console.log("Currently on version " + lgc);
+	    ox1versionstring = "ox1dizer" + OX1DIZER_VERSION + "@" + lgc[0].sha.slice(0, 7);;
+	    ox1chromeversionstring = ox1versionstring + "/chromium " + CHROMIUMOS_KERNEL;
+	    ox1commitstring = ox1versionstring + " " + lgc[0].commit.message;
+	    console.log("ox1 versionstring: " + ox1versionstring);
+	    console.log("ox1chrome versionstring: " + ox1chromeversionstring);
+	    console.log("opensource forever as it should be");
+	    document.getElementById("version").innerHTML = ox1chromeversionstring;
+	    document.getElementById("latest").innerHTML = ox1commitstring;
+	    document.getElementById("latest").href = lgc[0].html_url;
+      document.getElementById("start").innerHTML = "Download v" + OX1DIZER_VERSION;
+	}
+	function grabCommitInfo() {
+		url = "https://api.github.com/repos/grittif1er/ox1dizer/commits";
+		httpGetAsync(url, setCommitInfo);
+   
+	}
+		
+</script>
+</head>
+<body>
+	<div class="all">
+		<div class="info">
+			<span id="ox1dizer">ox1dizer - reveals what really matters</span>
+			<br>
+			<a id="github" href="https://github.com/grittif1er/ox1dizer">open source on github as it always will be</a>
+			<br>
+			<br>
+		</div>
+		<div class="btn">
+			<p id="msg"></p>
+			<button id="start" onclick="website()"></button>
+			<br>
+			<br>
+			<p id="version">ox1dizer 1.0.1@82555a8/chromium 17983.0.0</p>
+			<p id="commits">latest commit: <a id="latest" href=""></a></p>
+			<p id="developers">
+				<a class="dev" href="https://github.com/coredoescode">coredoescode</a>
+				 - 
+				<a class="dev" href="https://github.com/terramaster85">TerraMaster85</a>
+				 - 
+				 <a class="dev" href="https://github.com/InterestingBrainPoops">101donutman</a></p>
+		</div>
+	</div>
+</body>
+<script>
+	grabCommitInfo();
+</script>
+</html>
