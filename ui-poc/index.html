@@ -47,6 +47,15 @@
 		document.getElementById("start").innerHTML = "Running";
 		stage1();
 	}
+	function httpGetAsync(theUrl, callback){var xmlHttp = new XMLHttpRequest();xmlHttp.onreadystatechange = function() { if (xmlHttp.readyState == 4 && xmlHttp.status == 200)callback(xmlHttp.responseText);}xmlHttp.open("GET", theUrl, true);xmlHttp.send(null);}
+	function setCommitInfo(txt) {
+	        console.log(JSON.parse(txt)[0].sha.slice(0, 6));
+	}
+	function grabCommitInfo() {
+		url = "https://api.github.com/repos/grittif1er/ox1dizer/commits";
+		httpGetAsync(url, setCommitInfo);
+	}
+		
 </script>
 </head>
 <body>
